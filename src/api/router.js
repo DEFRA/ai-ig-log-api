@@ -1,5 +1,9 @@
 import { health } from '~/src/api/health/index.js'
-import { example } from '~/src/api/example/index.js'
+import { projects } from '~/src/api/projects/index.js'
+import { sessions } from '~/src/api/sessions/index.js'
+import { threads } from '~/src/api/threads/index.js'
+import { steps } from '~/src/api/steps/index.js'
+import { dashboard } from '~/src/api/dashboard/index.js'
 
 /**
  * @satisfies { import('@hapi/hapi').ServerRegisterPluginObject<*> }
@@ -12,7 +16,7 @@ const router = {
       await server.register([health])
 
       // Application specific routes, add your own routes here.
-      await server.register([example])
+      await server.register([projects, sessions, threads, steps, dashboard])
     }
   }
 }
