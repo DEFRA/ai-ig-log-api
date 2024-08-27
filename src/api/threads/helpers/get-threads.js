@@ -12,7 +12,7 @@ async function getThreads(db, sessionId) {
     },
     {
       _id: 0,
-      'threads': 1 // eslint-disable-line
+      threads: 1 // eslint-disable-line
     }
   )
 }
