@@ -5,7 +5,7 @@ import { findOne } from '~/src/api/helpers/db.js'
 const authApiKey = {
   name: 'authApiKey',
   version: '1.0.0',
-  register: async function (server, options) {
+  register: function (server) {
     // eslint-disable-line
     server.auth.scheme('api-key', () => {
       return {
