@@ -8,6 +8,7 @@ import { mongoDb } from '~/src/helpers/mongodb.js'
 import { failAction } from '~/src/helpers/fail-action.js'
 import { secureContext } from '~/src/helpers/secure-context/index.js'
 import { pulse } from '~/src/helpers/pulse.js'
+import { authApiKey } from '~/src/api/auth-api-key.js'
 
 const isProduction = config.get('isProduction')
 
@@ -45,6 +46,8 @@ async function createServer() {
   if (isProduction) {
     await server.register(secureContext)
   }
+
+  await server.register(authApiKey)
 
   // Pulse   - provides shutdown handlers
   // mongoDb - sets up mongo connection pool and attaches to `server` and `request` objects

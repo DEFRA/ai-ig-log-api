@@ -5,10 +5,11 @@ import {
   deleteSessionController
 } from '~/src/api/sessions/controllers/index.js'
 
+// prettier-ignore
 const sessions = {
   plugin: {
     name: 'sessions',
-    register: async (server) => { // eslint-disable-line
+    register: async (server) => { // eslint-disable-line 
       server.route([
         {
           method: 'GET',

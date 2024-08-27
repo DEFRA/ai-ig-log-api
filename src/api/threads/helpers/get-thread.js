@@ -1,4 +1,3 @@
-import { log } from 'console'
 import { UUID } from 'mongodb'
 import { findOne } from '~/src/api/helpers/db.js'
 

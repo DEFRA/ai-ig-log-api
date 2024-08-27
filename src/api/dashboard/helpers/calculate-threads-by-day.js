@@ -32,6 +32,7 @@ function pipeline(projectId) {
     },
 
     // Sort by date
+    // prettier-ignore
     {
       $sort: { '_id': 1 } // eslint-disable-line
     }

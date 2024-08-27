@@ -1,13 +1,12 @@
-import { UUID } from 'mongodb'
-import { findMany } from '~/src/api/helpers/db.js'
+import { getPaginatedCollection } from '~/src/api/helpers/pagination.js'
 
 async function getProjectSessions(db, projectId) {
-  return await findMany(
+  return await getPaginatedCollection(
     db,
     'sessions',
-    { project_id: new UUID(projectId) },
-    { _id: 0 }
+    { project_id: projectId },
+    1,
+    10
   )
 }
-
 export { getProjectSessions }

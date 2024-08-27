@@ -5,6 +5,7 @@ import {
   deleteStepController
 } from '~/src/api/steps/controllers/index.js'
 
+// prettier-ignore
 const steps = {
   plugin: {
     name: 'steps',

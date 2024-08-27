@@ -5,6 +5,7 @@ import {
   deleteThreadController
 } from '~/src/api/threads/controllers/index.js'
 
+// prettier-ignore
 const threads = {
   plugin: {
     name: 'threads',
