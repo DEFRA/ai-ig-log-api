@@ -1,7 +1,7 @@
 import Joi from 'joi'
 import { getThreads } from '~/src/api/threads/helpers/get-threads.js'
 
-const threadsListController = {
+export const threadsListController = {
   options: {
     validate: {
       params: Joi.object({
@@ -15,5 +15,3 @@ const threadsListController = {
     return h.response({ message: 'success', threads }).code(200)
   }
 }
-
-export { threadsListController }

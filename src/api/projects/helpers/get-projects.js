@@ -1,7 +1,5 @@
 import { findMany } from '~/src/api/helpers/db.js'
 
-async function getProjects(db) {
+export const getProjects = async (db) => {
   return await findMany(db, 'projects')
 }
-
-export { getProjects }

@@ -1,6 +1,6 @@
 import { aggregatetoNext } from '~/src/api/helpers/db.js'
 
-function pipeline(projectId) {
+const pipeline = (projectId) => {
   return [
     // Match documents with the specified project_id
     { $match: { project_id: projectId } },
@@ -14,7 +14,7 @@ function pipeline(projectId) {
   ]
 }
 
-async function calculateThreads(db, projectId) {
+const calculateThreads = async (db, projectId) => {
   return await aggregatetoNext(db, 'sessions', pipeline(projectId))
 }
 

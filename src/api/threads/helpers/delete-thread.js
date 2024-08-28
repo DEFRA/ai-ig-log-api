@@ -3,7 +3,7 @@ import { updateOne, findOne } from '~/src/api/helpers/db.js'
 
 const collection = 'sessions'
 
-async function deleteThread(db, sessionId, threadId) {
+export const deleteThread = async (db, sessionId, threadId) => {
   await updateOne(
     db,
     collection,
@@ -27,5 +27,3 @@ async function deleteThread(db, sessionId, threadId) {
     { _id: 0 }
   )
 }
-
-export { deleteThread }

@@ -1,7 +1,7 @@
 import Joi from 'joi'
 import { createProject } from '~/src/api/projects/helpers/create-project.js'
 
-const createProjectController = {
+export const createProjectController = {
   options: {
     validate: {
       payload: Joi.object({
@@ -15,5 +15,3 @@ const createProjectController = {
     return h.response(project).code(201)
   }
 }
-
-export { createProjectController }

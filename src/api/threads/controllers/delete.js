@@ -3,7 +3,7 @@ import Boom from '@hapi/boom'
 import _ from 'lodash'
 import { deleteThread } from '~/src/api/threads/helpers/delete-thread.js'
 
-const deleteThreadController = {
+export const deleteThreadController = {
   options: {
     validate: {
       params: Joi.object({
@@ -26,5 +26,3 @@ const deleteThreadController = {
     return h.response({ message: 'success', thread }).code(200)
   }
 }
-
-export { deleteThreadController }

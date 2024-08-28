@@ -3,7 +3,7 @@ import Boom from '@hapi/boom'
 import _ from 'lodash'
 import { getProject } from '~/src/api/projects/helpers/get-project.js'
 
-const projectController = {
+export const projectController = {
   options: {
     validate: {
       params: Joi.object({
@@ -21,5 +21,3 @@ const projectController = {
     return h.response({ message: 'success', project }).code(200)
   }
 }
-
-export { projectController }

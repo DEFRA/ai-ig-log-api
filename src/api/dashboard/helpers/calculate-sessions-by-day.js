@@ -1,6 +1,6 @@
 import { aggregatetoArray } from '~/src/api/helpers/db.js'
 
-function pipeline(projectId) {
+const pipeline = (projectId) => {
   return [
     // Match documents with the specified project_id
     { $match: { project_id: projectId } },
@@ -31,7 +31,7 @@ function pipeline(projectId) {
   ]
 }
 
-async function calculateSessionsByDay(db, projectId) {
+const calculateSessionsByDay = async (db, projectId) => {
   return await aggregatetoArray(db, 'sessions', pipeline(projectId))
 }
 

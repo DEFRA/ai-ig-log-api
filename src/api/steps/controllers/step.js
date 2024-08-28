@@ -3,7 +3,7 @@ import Boom from '@hapi/boom'
 import _ from 'lodash'
 import { getStep } from '~/src/api/steps/helpers/get-step.js'
 
-const stepController = {
+export const stepController = {
   options: {
     validate: {
       params: Joi.object({
@@ -28,5 +28,3 @@ const stepController = {
     return h.response({ message: 'success', step }).code(200)
   }
 }
-
-export { stepController }

@@ -3,7 +3,7 @@ import { updateOne, findOne } from '~/src/api/helpers/db.js'
 
 const collection = 'sessions'
 
-async function deleteStep(db, sessionId, threadId, stepId) {
+export const deleteStep = async (db, sessionId, threadId, stepId) => {
   await updateOne(
     db,
     collection,
@@ -30,5 +30,3 @@ async function deleteStep(db, sessionId, threadId, stepId) {
     }
   )
 }
-
-export { deleteStep }

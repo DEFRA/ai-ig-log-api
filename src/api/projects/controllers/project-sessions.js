@@ -2,7 +2,7 @@ import { log } from 'console'
 import Joi from 'joi'
 import { getProjectSessions } from '~/src/api/projects/helpers/get-project-sessions.js'
 
-const projectSessionsController = {
+export const projectSessionsController = {
   options: {
     validate: {
       params: Joi.object({
@@ -20,5 +20,3 @@ const projectSessionsController = {
     return h.response({ message: 'success', sessions }).code(200)
   }
 }
-
-export { projectSessionsController }

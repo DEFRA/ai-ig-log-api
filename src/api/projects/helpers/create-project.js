@@ -1,7 +1,7 @@
 import { UUID } from 'mongodb'
 import { insertOne, findOne } from '~/src/api/helpers/db.js'
 
-async function createProject(db, project) {
+export const createProject = async (db, project) => {
   const document = {
     ...project,
     projectId: new UUID(project.id),
@@ -13,5 +13,3 @@ async function createProject(db, project) {
 
   return await findOne(db, 'projects', { _id: insertedId }, { _id: 0 })
 }
-
-export { createProject }

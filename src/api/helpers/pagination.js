@@ -1,13 +1,13 @@
 import { log } from 'console'
 import { aggregatetoArray } from '~/src/api/helpers/db.js'
 
-async function getPaginatedCollection(
+const getPaginatedCollection = async (
   db,
   collection,
   query,
   pageNumber,
   pageSize
-) {
+) => {
   const pipeline = [
     { $match: query },
     {

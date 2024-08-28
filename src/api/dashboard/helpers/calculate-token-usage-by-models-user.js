@@ -1,6 +1,6 @@
 import { aggregatetoArray } from '~/src/api/helpers/db.js'
 
-function pipeline(projectId, costLookup) {
+const pipeline = (projectId, costLookup) => {
   return [
     { $unwind: '$threads' },
     { $unwind: '$threads.steps' },
@@ -55,7 +55,7 @@ function pipeline(projectId, costLookup) {
   ]
 }
 
-async function calculateTokenUsageByModelByUser(db, projectId, costLookup) {
+const calculateTokenUsageByModelByUser = async (db, projectId, costLookup) => {
   return await aggregatetoArray(db, 'sessions', pipeline(projectId, costLookup))
 }
 

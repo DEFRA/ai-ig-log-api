@@ -3,7 +3,7 @@ import { updateOne, findOne } from '~/src/api/helpers/db.js'
 
 const collection = 'sessions'
 
-async function createThread(db, sessionId, thread) {
+export const createThread = async (db, sessionId, thread) => {
   const document = {
     ...thread,
     threadId: new UUID(thread.id),
@@ -30,5 +30,3 @@ async function createThread(db, sessionId, thread) {
     { _id: 0 }
   )
 }
-
-export { createThread }

@@ -1,7 +1,7 @@
 import { UUID } from 'mongodb'
 import { findOne } from '~/src/api/helpers/db.js'
 
-async function getProject(db, projectId) {
+export const getProject = async (db, projectId) => {
   return await findOne(
     db,
     'projects',
@@ -9,5 +9,3 @@ async function getProject(db, projectId) {
     { _id: 0 }
   )
 }
-
-export { getProject }

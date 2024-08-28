@@ -1,6 +1,6 @@
 import { dashboardController } from '~/src/api/dashboard/controllers/index.js'
 
-const dashboard = {
+export const dashboard = {
   plugin: {
     name: 'dashboard',
     register: (server) => {
@@ -14,5 +14,3 @@ const dashboard = {
     }
   }
 }
-
-export { dashboard }
