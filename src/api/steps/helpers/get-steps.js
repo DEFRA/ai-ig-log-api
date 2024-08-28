@@ -3,7 +3,7 @@ import { findOne } from '~/src/api/helpers/db.js'
 
 const collection = 'sessions'
 
-async function getSteps(db, sessionId, threadId) {
+export const getSteps = async (db, sessionId, threadId) => {
   const session = await findOne(
     db,
     collection,
@@ -18,5 +18,3 @@ async function getSteps(db, sessionId, threadId) {
     (thread) => thread.threadId.toString() === threadId
   ).steps
 }
-
-export { getSteps }

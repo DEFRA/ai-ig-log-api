@@ -3,7 +3,7 @@ import { findOne } from '~/src/api/helpers/db.js'
 
 const collection = 'sessions'
 
-async function getThread(db, sessionId, threadId) {
+export const getThread = async (db, sessionId, threadId) => {
   const session = await findOne(
     db,
     collection,
@@ -14,5 +14,3 @@ async function getThread(db, sessionId, threadId) {
   )
   return session.threads.find((thread) => thread.id === threadId)
 }
-
-export { getThread }

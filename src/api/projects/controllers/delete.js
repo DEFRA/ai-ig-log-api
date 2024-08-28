@@ -3,7 +3,7 @@ import Boom from '@hapi/boom'
 import _ from 'lodash'
 import { deleteProject } from '~/src/api/projects/helpers/delete-project.js'
 
-const deleteProjectController = {
+export const deleteProjectController = {
   options: {
     validate: {
       params: Joi.object({
@@ -21,5 +21,3 @@ const deleteProjectController = {
     return h.response({ message: 'success', project }).code(200)
   }
 }
-
-export { deleteProjectController }

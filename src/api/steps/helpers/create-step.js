@@ -3,7 +3,7 @@ import { updateOne, findOne } from '~/src/api/helpers/db.js'
 
 const collection = 'sessions'
 
-async function createStep(db, sessionId, threadId, step) {
+export const createStep = async (db, sessionId, threadId, step) => {
   const document = {
     ...step,
     stepId: new UUID(step.id),
@@ -35,5 +35,3 @@ async function createStep(db, sessionId, threadId, step) {
     }
   )
 }
-
-export { createStep }

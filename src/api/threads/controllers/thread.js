@@ -3,7 +3,7 @@ import Boom from '@hapi/boom'
 import _ from 'lodash'
 import { getThread } from '~/src/api/threads/helpers/get-thread.js'
 
-const threadController = {
+export const threadController = {
   options: {
     validate: {
       params: Joi.object({
@@ -26,5 +26,3 @@ const threadController = {
     return h.response({ message: 'success', thread }).code(200)
   }
 }
-
-export { threadController }

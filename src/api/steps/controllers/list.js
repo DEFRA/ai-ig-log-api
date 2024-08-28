@@ -1,7 +1,7 @@
 import Joi from 'joi'
 import { getSteps } from '~/src/api/steps/helpers/get-steps.js'
 
-const stepsListController = {
+export const stepsListController = {
   options: {
     validate: {
       params: Joi.object({
@@ -20,5 +20,3 @@ const stepsListController = {
     return h.response({ message: 'success', steps }).code(200)
   }
 }
-
-export { stepsListController }

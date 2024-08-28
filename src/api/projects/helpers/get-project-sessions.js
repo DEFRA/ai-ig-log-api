@@ -1,6 +1,6 @@
 import { getPaginatedCollection } from '~/src/api/helpers/pagination.js'
 
-async function getProjectSessions(db, projectId) {
+export const getProjectSessions = async (db, projectId) => {
   return await getPaginatedCollection(
     db,
     'sessions',
@@ -9,4 +9,3 @@ async function getProjectSessions(db, projectId) {
     10
   )
 }
-export { getProjectSessions }

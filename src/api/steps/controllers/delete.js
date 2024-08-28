@@ -3,7 +3,7 @@ import Boom from '@hapi/boom'
 import _ from 'lodash'
 import { deleteStep } from '~/src/api/steps/helpers/delete-step.js'
 
-const deleteStepController = {
+export const deleteStepController = {
   options: {
     validate: {
       params: Joi.object({
@@ -28,5 +28,3 @@ const deleteStepController = {
     return h.response({ message: 'success', step }).code(200)
   }
 }
-
-export { deleteStepController }
