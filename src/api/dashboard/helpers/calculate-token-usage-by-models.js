@@ -43,12 +43,8 @@ const pipeline = (projectId) => {
   ]
 }
 
-const calculateTokenUsageByModel = async (db, projectId, costLookup) => {
-  const usage = await aggregatetoArray(
-    db,
-    'sessions',
-    pipeline(projectId, costLookup)
-  )
+const calculateTokenUsageByModel = async (db, projectId) => {
+  const usage = await aggregatetoArray(db, 'sessions', pipeline(projectId))
   return calculateCost(usage)
 }
 
