@@ -1,7 +1,9 @@
 import { aggregatetoArray } from '~/src/api/helpers/db.js'
+import { calculateCost } from '~/src/api/dashboard/helpers/calculate-cost.js'
 
-const pipeline = (projectId, costLookup) => {
+const pipeline = (projectId) => {
   return [
+    { $match: { project_id: projectId } },
     { $unwind: '$threads' },
     { $unwind: '$threads.steps' },
     {
@@ -21,28 +23,7 @@ const pipeline = (projectId, costLookup) => {
     },
     {
       $addFields: {
-        totalTokens: { $sum: ['$totalInputTokens', '$totalOutputTokens'] },
-        cost: {
-          $multiply: [
-            { $sum: ['$totalInputTokens', '$totalOutputTokens'] },
-            {
-              $switch: {
-                branches: Object.keys(costLookup).map((model) => ({
-                  case: { $eq: ['$_id.model', model] },
-                  then: costLookup[model]
-                })),
-                default: 0
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      $addFields: {
-        cost: {
-          $round: [{ $divide: ['$cost', 100] }, 4]
-        }
+        totalTokens: { $sum: ['$totalInputTokens', '$totalOutputTokens'] }
       }
     },
     {
@@ -50,6 +31,8 @@ const pipeline = (projectId, costLookup) => {
         _id: 0,
         day: '$_id.day',
         model: '$_id.model',
+        totalInputTokens: 1,
+        totalOutputTokens: 1,
         totalTokens: 1,
         cost: 1
       }
@@ -60,8 +43,9 @@ const pipeline = (projectId, costLookup) => {
   ]
 }
 
-const calculateTokenUsageByModel = async (db, projectId, costLookup) => {
-  return await aggregatetoArray(db, 'sessions', pipeline(projectId, costLookup))
+const calculateTokenUsageByModel = async (db, projectId) => {
+  const usage = await aggregatetoArray(db, 'sessions', pipeline(projectId))
+  return calculateCost(usage)
 }
 
 export { calculateTokenUsageByModel }
