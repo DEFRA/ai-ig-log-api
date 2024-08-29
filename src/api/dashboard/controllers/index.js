@@ -3,9 +3,7 @@ import { calculateTokenUsageByModel } from '~/src/api/dashboard/helpers/calculat
 import { calculateTokenUsage } from '~/src/api/dashboard/helpers/calculate-token-usage.js'
 import { calculateThreads } from '~/src/api/dashboard/helpers/calculate-threads.js'
 import { calculateThreadsByDay } from '~/src/api/dashboard/helpers/calculate-threads-by-day.js'
-import { calculateTokenUsageByModelByUser } from '~/src/api/dashboard/helpers/calculate-token-usage-by-models-user.js'
 import { calculateSessionsByDay } from '~/src/api/dashboard/helpers/calculate-sessions-by-day.js'
-import { log } from 'console'
 
 const dashboardController = {
   options: {
