@@ -2,13 +2,14 @@ import path from 'path'
 import hapi from '@hapi/hapi'
 
 import { config } from '~/src/config/index.js'
-import { router } from '~/src/api/router.js'
+import { router } from '~/src/api/plugins/router.js'
 import { requestLogger } from '~/src/helpers/logging/request-logger.js'
 import { mongoDb } from '~/src/helpers/mongodb.js'
 import { failAction } from '~/src/helpers/fail-action.js'
 import { secureContext } from '~/src/helpers/secure-context/index.js'
 import { pulse } from '~/src/helpers/pulse.js'
-import { authApiKey } from '~/src/api/auth-api-key.js'
+import { authApiKey } from '~/src/api/plugins/auth-api-key.js'
+import { jwtAuthPlugin } from '~/src/api/plugins/auth-jwt.js'
 
 const isProduction = config.get('isProduction')
 
@@ -47,6 +48,7 @@ async function createServer() {
     await server.register(secureContext)
   }
 
+  await server.register(jwtAuthPlugin)
   await server.register(authApiKey)
 
   // Pulse   - provides shutdown handlers

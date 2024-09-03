@@ -1,3 +1,4 @@
+import { UUID } from 'mongodb'
 import Boom from '@hapi/boom'
 import { log } from 'console'
 import { findOne } from '~/src/api/helpers/db.js'
@@ -21,7 +22,7 @@ const authApiKey = {
             const key = await findOne(
               db,
               'projects',
-              { id: apiKey },
+              { 'access_keys.key': new UUID(apiKey) },
               { _id: 0 }
             )
 

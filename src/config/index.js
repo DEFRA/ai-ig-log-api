@@ -73,6 +73,13 @@ const config = convict({
     nullable: true,
     default: null,
     env: 'CDP_HTTPS_PROXY'
+  },
+  jwtSecret: {
+    doc: 'JWT Secret',
+    format: String,
+    nullable: true,
+    default: null,
+    env: 'JWT_SECRET'
   }
 })
 

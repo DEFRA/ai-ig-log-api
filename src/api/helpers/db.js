@@ -23,10 +23,10 @@ const findOne = async (db, collectionName, query, projection = {}) => {
   return result
 }
 
-const findMany = async (db, collectionName) => {
+const findMany = async (db, collectionName, query = {}) => {
   const cursor = db
     .collection(collectionName)
-    .find({}, { projection: { _id: 0 } })
+    .find(query, { projection: { _id: 0 } })
   return await cursor.toArray()
 }
 
