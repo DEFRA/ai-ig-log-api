@@ -3,8 +3,8 @@ const costLookup = [
   { model: 'chatgpt-40', input_token_cost: 0.06, output_token_cost: 0.05 },
   {
     model: 'gpt-3.5-turbo',
-    input_token_cost: 0.005,
-    output_token_cost: 0.003
+    input_token_cost: 0.0004,
+    output_token_cost: 0.0012
   }
 ]
 
@@ -14,9 +14,9 @@ const calculateCost = (data) => {
     if (!costInfo) {
       throw new Error(`Cost information not found for model: ${entry.model}`)
     }
-    const inputCost = (entry.totalInputTokens * costInfo.input_token_cost) / 100
+    const inputCost = ((entry.totalInputTokens * costInfo.input_token_cost) / 1000)
     const outputCost =
-      (entry.totalOutputTokens * costInfo.output_token_cost) / 100
+      ((entry.totalOutputTokens * costInfo.output_token_cost) / 1000)
     const totalCost = inputCost + outputCost
     return {
       ...entry,

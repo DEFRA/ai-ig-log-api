@@ -7,6 +7,6 @@ export default Joi.object({
   start_time: Joi.date().required(),
   end_time: Joi.date().allow(null),
   input: Joi.string().required(),
-  output: Joi.string().allow(null),
+  output: Joi.string().allow(null).allow(''),
   steps: Joi.array().items(step).allow(null)
 })
