@@ -10,14 +10,14 @@ const pipeline = (projectId, costLookup) => {
           day: {
             $dateToString: {
               format: '%Y-%m-%d',
-              date: '$threads.start_time'
+              date: '$threads.startTime'
             }
           },
-          model: '$threads.steps.model_name',
+          model: '$threads.steps.modelName',
           user: '$user'
         },
-        totalInputTokens: { $sum: '$threads.steps.input_tokens' },
-        totalOutputTokens: { $sum: '$threads.steps.output_tokens' }
+        totalInputTokens: { $sum: '$threads.steps.inputTokens' },
+        totalOutputTokens: { $sum: '$threads.steps.outputTokens' }
       }
     },
     {

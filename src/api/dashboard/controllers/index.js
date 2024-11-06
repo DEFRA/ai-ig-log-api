@@ -19,7 +19,7 @@ const dashboardController = {
 
     const totalSession = await db
       .collection('sessions')
-      .countDocuments({ project_id: projectId })
+      .countDocuments({ projectId })
     const sessionsByDay = await calculateSessionsByDay(db, projectId)
     const tokenUsageByModel = await calculateTokenUsageByModel(db, projectId)
     const tokenUsage = await calculateTokenUsage(db, projectId)

@@ -3,7 +3,7 @@ import { aggregatetoArray } from '~/src/api/helpers/db.js'
 const pipeline = (projectId) => {
   return [
     // Match documents with the specified project_id
-    { $match: { project_id: projectId } },
+    { $match: { projectId } },
 
     {
       $project: {

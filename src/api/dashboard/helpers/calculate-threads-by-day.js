@@ -3,13 +3,13 @@ import { aggregatetoArray } from '~/src/api/helpers/db.js'
 const pipeline = (projectId) => {
   return [
     // Match documents with the specified project_id
-    { $match: { project_id: projectId } },
+    { $match: { projectId } },
 
     // Project the necessary fields including date and the number of threads
     {
       $project: {
         date: {
-          $dateToString: { format: '%Y-%m-%d', date: '$start_time' }
+          $dateToString: { format: '%Y-%m-%d', date: '$startTime' }
         },
         number_of_threads: { $size: '$threads' }
       }
