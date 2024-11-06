@@ -1,4 +1,3 @@
-import { log } from 'console'
 import Joi from 'joi'
 import { getProjectSessions } from '~/src/api/projects/helpers/get-project-sessions.js'
 
@@ -11,7 +10,6 @@ export const projectSessionsController = {
     }
   },
   handler: async (request, h) => {
-    log('GET /projects/{projectId}/sessions')
     const sessions = await getProjectSessions(
       request.db,
       request.params.projectId

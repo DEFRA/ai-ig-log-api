@@ -3,7 +3,7 @@ import { calculateCost } from '~/src/api/dashboard/helpers/calculate-cost.js'
 
 const pipeline = (projectId) => {
   return [
-    { $match: { project_id: projectId } },
+    { $match: { projectId } },
     { $unwind: '$threads' },
     { $unwind: '$threads.steps' },
     {
@@ -12,13 +12,13 @@ const pipeline = (projectId) => {
           day: {
             $dateToString: {
               format: '%Y-%m-%d',
-              date: '$threads.start_time'
+              date: '$threads.startTime'
             }
           },
-          model: '$threads.steps.model_name'
+          model: '$threads.steps.modelName'
         },
-        totalInputTokens: { $sum: '$threads.steps.input_tokens' },
-        totalOutputTokens: { $sum: '$threads.steps.output_tokens' }
+        totalInputTokens: { $sum: '$threads.steps.inputTokens' },
+        totalOutputTokens: { $sum: '$threads.steps.outputTokens' }
       }
     },
     {
