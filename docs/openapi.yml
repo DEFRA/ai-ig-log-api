@@ -332,7 +332,7 @@ components:
           format: uuid
         name:
           type: string
-        starTime:
+        startTime:
           type: string
           format: date-time
         endTime:
