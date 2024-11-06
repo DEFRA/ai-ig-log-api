@@ -14,9 +14,10 @@ const calculateCost = (data) => {
     if (!costInfo) {
       throw new Error(`Cost information not found for model: ${entry.model}`)
     }
-    const inputCost = ((entry.totalInputTokens * costInfo.input_token_cost) / 1000)
+    const inputCost =
+      (entry.totalInputTokens * costInfo.input_token_cost) / 1000
     const outputCost =
-      ((entry.totalOutputTokens * costInfo.output_token_cost) / 1000)
+      (entry.totalOutputTokens * costInfo.output_token_cost) / 1000
     const totalCost = inputCost + outputCost
     return {
       ...entry,
