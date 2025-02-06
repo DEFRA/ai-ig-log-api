@@ -5,6 +5,11 @@ const costLookup = [
     model: 'gpt-3.5-turbo',
     input_token_cost: 0.0004,
     output_token_cost: 0.0012
+  },
+  {
+    model: 'anthropic.claude-3-sonnet-20240229-v1:0',
+    input_token_cost: 0.003,
+    output_token_cost: 0.015
   }
 ]
 
